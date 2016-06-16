@@ -20,15 +20,15 @@ Route::group(['middleware' => ['web']], function(){
 	Route::get('/home', 'HomeController@index');
 });
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web'], 'namespace' => 'Backend'], function () {
     //Login Routes...
-    Route::get('/admin/login','AdminAuth\AuthController@showLoginForm');
-    Route::post('/admin/login','AdminAuth\AuthController@login');
-    Route::get('/admin/logout','AdminAuth\AuthController@logout');
+    Route::get('/admin/login','AuthController@showLoginForm');
+    Route::post('/admin/login','AuthController@login');
+    Route::get('/admin/logout','AuthController@logout');
 
     // Registration Routes...
-    Route::get('admin/register', 'AdminAuth\AuthController@showRegistrationForm');
-    Route::post('admin/register', 'AdminAuth\AuthController@register');
+    Route::get('admin/register', 'AuthController@showRegistrationForm');
+    Route::post('admin/register', 'AuthController@register');
 
-    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin', 'IndexController@index');
 });  
