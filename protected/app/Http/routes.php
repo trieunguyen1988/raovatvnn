@@ -20,15 +20,22 @@ Route::group(['middleware' => ['web']], function(){
 	Route::get('/home', 'HomeController@index');
 });
 
-Route::group(['middleware' => ['web'], 'namespace' => 'Backend'], function () {
+Route::group(['middleware' => ['web'], 'namespace' => 'Backend', 'prefix' => 'admin'], function () {
     //Login Routes...
-    Route::get('/admin/login','AuthController@showLoginForm');
-    Route::post('/admin/login','AuthController@login');
-    Route::get('/admin/logout','AuthController@logout');
+    Route::get('/login','AuthController@showLoginForm');
+    Route::post('/login','AuthController@login');
+    Route::get('/logout','AuthController@logout');
 
     // Registration Routes...
-    Route::get('admin/register', 'AuthController@showRegistrationForm');
-    Route::post('admin/register', 'AuthController@register');
+    Route::get('/register', 'AuthController@showRegistrationForm');
+    Route::post('/register', 'AuthController@register');
 
-    Route::get('/admin', 'IndexController@index');
+    //admin homepage
+    Route::get('/', 'IndexController@index');
+
+    //Category
+    Route::group(['prefix' => 'country'], function(){
+        Route::get('add', ['as' => 'admin.country.getAdd', 'uses' => 'CountryController@getAdd']);
+        Route::post('add', ['as' => 'admin.country.postAdd', 'uses' => 'CountryController@postAdd']);
+    });
 });  

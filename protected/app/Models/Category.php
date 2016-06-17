@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Country extends Model
+class Category extends Model
 {
-    protected $table = 'country';
-    protected $primaryKey = 'country_id';
+    protected $table = 'category';
+    protected $primaryKey = 'category_id';
     public $timestamps = true;
     /**
      * The attributes that are mass assignable.
@@ -15,6 +15,6 @@ class Country extends Model
      * @var array
      */
     protected $fillable = [
-        'country_name', 'published',
+        'category_name', 'parent_id', 'order', 'published',
     ];
 }
