@@ -12,11 +12,13 @@ use App\Models\Country;
 class CountryController extends Controller
 {
     public function getAdd(){
-    	return view('backend.country.add');
+        $m_country = new Country();
+        $countries = $m_country->getAll();
+        $data['countries'] = $countries;
+    	return view('backend.country.add', $data);
     }
 
     public function postAdd(CountryRequest $request){
-    	print_r($request->country_name);
     	$country = new Country();
     	$country->country_name    = $request->country_name;
     	$country->published       = 1;

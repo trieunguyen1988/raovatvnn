@@ -17,4 +17,10 @@ class Country extends Model
     protected $fillable = [
         'country_name', 'published',
     ];
+
+    public function getAll($recordOfPage = PER_PAGE){
+        return $this->where('delete_flg', 0)
+        ->where('published', 1)
+        ->paginate($recordOfPage);
+    }
 }
