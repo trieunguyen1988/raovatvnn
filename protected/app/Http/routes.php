@@ -33,9 +33,10 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Backend', 'prefix' => 'ad
     //admin homepage
     Route::get('/', 'IndexController@index');
 
-    //Category
+    //Country
     Route::group(['prefix' => 'country'], function(){
         Route::get('add', ['as' => 'admin.country.getAdd', 'uses' => 'CountryController@getAdd']);
         Route::post('add', ['as' => 'admin.country.postAdd', 'uses' => 'CountryController@postAdd']);
+        Route::get('list', ['as' => 'admin.country.getList', 'uses' => 'CountryController@getList']);
     });
 });  

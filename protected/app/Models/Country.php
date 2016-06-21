@@ -18,9 +18,8 @@ class Country extends Model
         'country_name', 'published',
     ];
 
-    public function getAll($recordOfPage = PER_PAGE){
+    public function getAll(){
         return $this->where('delete_flg', 0)
-        ->where('published', 1)
-        ->paginate($recordOfPage);
+        ->where('published', 1);
     }
 }
