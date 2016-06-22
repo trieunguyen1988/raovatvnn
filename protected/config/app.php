@@ -158,6 +158,8 @@ return [
 
         Yajra\Datatables\DatatablesServiceProvider::class,
 
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider', // Laravel IDE helper
+
     ],
 
     /*

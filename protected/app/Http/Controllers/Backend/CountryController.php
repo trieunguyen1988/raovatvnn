@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\CountryRequest;
 use App\Models\Country;
-use App\DataTables\Backend\CountryDataTable;
+use App\DataTables\Backend\CountryDatatable;
 
 class CountryController extends Controller
 {
