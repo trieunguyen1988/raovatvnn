@@ -18,7 +18,7 @@ class CountryDatatable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', 'path.to.action.view')
+            ->editColumn('action', '<button class="btn btn-block btn-success btn-xs">Sửa</button>')
             ->make(true);
     }
 
@@ -29,7 +29,8 @@ class CountryDatatable extends DataTable
      */
     public function query()
     {
-        $countries = Country::select(['country_id', 'country_name']);
+        $mCountry = new Country();
+        $countries = $mCountry->getAll();
 
         return $this->applyScopes($countries);
     }

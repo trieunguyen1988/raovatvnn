@@ -18,8 +18,12 @@ class Country extends Model
         'country_name', 'published',
     ];
 
-    public function getAll(){
-        return $this->where('delete_flg', 0)
-        ->where('published', 1);
+    public function getAll()
+    {
+        $countries = $this->select(['country_id', 'country_name'])
+            ->where('published', 1)
+            ->where('delete_flg', 0)
+            ->orderby('country_name', 'ASC')->paginate(10);
+        return $countries;
     }
 }

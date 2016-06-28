@@ -12,12 +12,8 @@ use App\DataTables\Backend\CountryDatatable;
 
 class CountryController extends Controller
 {
-    public function getAdd(CountryDataTable $dataTable){
-        $m_country = new Country();
-        $countries = $m_country->getAll();
-        $data['countries'] = $countries;
-        return $dataTable->render('backend.country.add', $data);
-    	//return view('backend.country.add', $data);
+    public function getAdd(){
+        return view('backend.country.add');
     }
 
     public function postAdd(CountryRequest $request){
@@ -35,8 +31,9 @@ class CountryController extends Controller
      */
     public function getList()
     {
-        $m_country = new Country();
-        $countries = $m_country->getAll();
-        return Datatables::of($countries)->make(true);
+        $mCountry = new Country();
+        $countries = $mCountry->getAll();
+        $data['countries'] = $countries;
+        return view('backend.country.index', $data);
     }
 }
