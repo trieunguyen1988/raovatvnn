@@ -45,6 +45,8 @@
         
         <!-- Bootstrap WYSIHTML5 -->
         <script src="{{ URL::asset('public/backend/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+
+        <script src="{{  URL::asset('public/backend/plugins/iCheck/icheck.min.js') }}"></script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">

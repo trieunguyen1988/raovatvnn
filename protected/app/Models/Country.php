@@ -26,4 +26,15 @@ class Country extends Model
             ->orderby('country_name', 'ASC')->paginate(10);
         return $countries;
     }
+
+    public function getById($country_id)
+    {
+        if (!$country_id) {
+            return false;
+        }
+
+        $country = $this->where('country_id', $country_id)
+            ->where('delete_flg', 0);
+        return $country;
+    }
 }

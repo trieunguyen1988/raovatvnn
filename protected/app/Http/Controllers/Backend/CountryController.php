@@ -36,4 +36,11 @@ class CountryController extends Controller
         $data['countries'] = $countries;
         return view('backend.country.index', $data);
     }
+
+    public function getDelete($country_id){
+        $mCountry = new Country();
+        $mCountry->find($country_id);
+        $mCountry->delete($country_id);
+        //return redirect()->route('admin.country.getList');
+    }
 }
