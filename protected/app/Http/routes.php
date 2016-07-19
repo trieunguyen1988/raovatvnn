@@ -40,4 +40,11 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Backend', 'prefix' => 'ad
         Route::get('/', ['as' => 'admin.country.getList', 'uses' => 'CountryController@getList']);
         Route::get('delete/{country_id}', ['as' => 'admin.country.getDelete', 'uses' => 'CountryController@getDelete']);
     });
+
+    //Province
+    Route::group(['prefix' => 'province'], function(){
+        Route::get('add', ['as' => 'admin.province.getAdd', 'uses' => 'ProvinceController@getAdd']);
+        Route::post('add', ['as' => 'admin.province.postAdd', 'uses' => 'ProvinceController@postAdd']);
+        Route::get('/', ['as' => 'admin.province.getList', 'uses' => 'ProvinceController@getList']);
+    });
 });  
