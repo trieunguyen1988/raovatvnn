@@ -46,5 +46,6 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Backend', 'prefix' => 'ad
         Route::get('add', ['as' => 'admin.province.getAdd', 'uses' => 'ProvinceController@getAdd']);
         Route::post('add', ['as' => 'admin.province.postAdd', 'uses' => 'ProvinceController@postAdd']);
         Route::get('/', ['as' => 'admin.province.getList', 'uses' => 'ProvinceController@getList']);
+        Route::get('delete/{province_id}', ['as' => 'admin.province.getDelete', 'uses' => 'ProvinceController@getDelete']);
     });
 });  

@@ -20,10 +20,11 @@ class Province extends Model
 
     public function getAll()
     {
-        $provinces = $this->select(['province_id', 'province_name'])
-            ->where('published', 1)
-            ->where('delete_flg', 0)
-            ->orderby('province_name', 'ASC')->paginate(10);
+        $provinces = $this->select(['province_id', 'province_name', 'country.country_name'])
+            ->join('country', $this->table.'.country_id', '=', 'country.country_id')
+            ->where($this->table.'.published', 1)
+            ->where($this->table.'.delete_flg', 0)
+            ->orderby($this->table.'.province_name', 'ASC')->paginate(10);
         return $provinces;
     }
 

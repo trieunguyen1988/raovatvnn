@@ -13,10 +13,17 @@ use Validator;
 
 class ProvinceController extends Controller
 {
-    public function getAdd(){
+
+	public function __construct()
+	{
+		$this->mProvince = new Province();
+		$this->mCountry = new Country();
+	}
+
+	public function getAdd(){
     	$data['title'] = trans('province.lbl_add');
-    	$mCountry = new Country();
-        $countries = $mCountry->getAll();
+    	$this->mCountry = new Country();
+        $countries = $this->mCountry->getAll();
         $data['countries'] = $countries;
         return view('backend.province.add', $data);
     }
@@ -24,18 +31,38 @@ class ProvinceController extends Controller
     public function postAdd(ProvinceRequest $request){
     	$data['title'] = trans('province.lbl_add');
 
-    	$mProvince                  = new Province();
-    	$mProvince->country_id      = $request->country_id;
-    	$mProvince->province_name   = $request->province_name;
-    	$mProvince->published       = 1;
-    	if ($mProvince->save()){
+    	$this->mProvince                  = new Province();
+    	$this->mProvince->country_id      = $request->country_id;
+    	$this->mProvince->province_name   = $request->province_name;
+    	$this->mProvince->published       = 1;
+    	if ($this->mProvince->save()){
     		return redirect()->route('admin.province.getAdd')->with(['flash_message' => 'Thêm tỉnh/thành thành công']);
     	}
 
     	//load model
-    	$mCountry = new Country();
-    	$countries = $mCountry->getAll();
+    	$this->mCountry = new Country();
+    	$countries = $this->mCountry->getAll();
 	    $data['countries'] = $countries;
     	return view('backend.province.add', $data);
     }
+
+	/**
+	 * Process datatables ajax request.
+	 *
+	 * @return \Illuminate\Http\JsonResponse
+	 */
+	public function getList()
+	{
+		$this->mProvince = new Province();
+		$provinces = $this->mProvince->getAll();
+		$data['provinces'] = $provinces;
+		return view('backend.province.index', $data);
+	}
+
+	public function getDelete($province_id){
+		$this->mProvince = new Province();
+		$this->mProvince->find($province_id);
+		$this->mProvince->delete($province_id);
+		//return redirect()->route('admin.country.getList');
+	}
 }
