@@ -7,7 +7,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> {!! trans('common.lbl_home') !!}</a></li>
-        <li><a href="{!! route('admin.province.getList') !!}"> {!! trans('province.province') !!}</a></li>
+        <li><a href="{!! route('admin.province.index') !!}"> {!! trans('province.province') !!}</a></li>
         <li class="active">{!! trans('province.lbl_add') !!}</li>
     </ol>
 </section>

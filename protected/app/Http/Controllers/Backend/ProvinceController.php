@@ -20,6 +20,18 @@ class ProvinceController extends Controller
 		$this->mCountry = new Country();
 	}
 
+	/**
+	 * Process datatables ajax request.
+	 *
+	 * @return \Illuminate\Http\JsonResponse
+	 */
+	public function index()
+	{
+		$provinces = $this->mProvince->getAll();
+		$data['provinces'] = $provinces;
+		return view('backend.province.index', $data);
+	}
+
 	public function getAdd(){
     	$data['title'] = trans('province.lbl_add');
         $countries = $this->mCountry->getAll();
@@ -45,19 +57,19 @@ class ProvinceController extends Controller
 
 	public function getEdit($province_id){
 		if (!$province_id){
-			return redirect()->route('admin.province.getList')->with(['flash_message_err' => 'Thông tin không được tìm thấy']);;
+			return redirect()->route('admin.province.index')->with(['flash_message_err' => 'Thông tin không được tìm thấy']);;
 		}
 
 		try {
 			$province_id = Crypt::decrypt($province_id);
 		} catch(\Illuminate\Contracts\Encryption\DecryptException $e) {
-			return redirect()->route('admin.province.getList');
+			return redirect()->route('admin.province.index');
 		}
 
 		//get province info
 		$province = $this->mProvince->getById($province_id);
 		if (!$province){
-			return redirect()->route('admin.province.getList')->with(['flash_message_err' => 'Thông tin không được tìm thấy']);;
+			return redirect()->route('admin.province.index')->with(['flash_message_err' => 'Thông tin không được tìm thấy']);;
 		}
 
 		$data['title'] = trans('province.lbl_edit');
@@ -74,7 +86,7 @@ class ProvinceController extends Controller
 		try {
 			$province_id = Crypt::decrypt($province_id);
 		} catch(\Illuminate\Contracts\Encryption\DecryptException $e) {
-			return redirect()->route('admin.province.getList');
+			return redirect()->route('admin.province.index');
 		}
 
 		$params = array(
@@ -82,7 +94,7 @@ class ProvinceController extends Controller
 				'province_name' => $request->province_name
 		);
 		if ($this->mProvince->updateById($province_id, $params)){
-			return redirect()->route('admin.province.getList')->with(['flash_message_succ' => 'Sửa tỉnh/thành thành công']);
+			return redirect()->route('admin.province.index')->with(['flash_message_succ' => 'Sửa tỉnh/thành thành công']);
 		}
 
 		//load model
@@ -91,26 +103,14 @@ class ProvinceController extends Controller
 		return view('backend.province.edit', $data);
 	}
 
-	/**
-	 * Process datatables ajax request.
-	 *
-	 * @return \Illuminate\Http\JsonResponse
-	 */
-	public function getList()
-	{
-		$provinces = $this->mProvince->getAll();
-		$data['provinces'] = $provinces;
-		return view('backend.province.index', $data);
-	}
-
 	public function getDelete($province_id){
 		try {
 			$province_id = Crypt::decrypt($province_id);
 		} catch(\Illuminate\Contracts\Encryption\DecryptException $e) {
-			return redirect()->route('admin.province.getList');
+			return redirect()->route('admin.province.index');
 		}
 
 		$this->mProvince->deleteProvince($province_id);
-		return redirect()->route('admin.province.getList')->with(['flash_message_succ' => 'Xóa thành công']);
+		return redirect()->route('admin.province.index')->with(['flash_message_succ' => 'Xóa thành công']);
 	}
 }

@@ -1,2 +1,2 @@
 <?php 
-define('PER_PAGE', 20);
+define('PER_PAGE', 10);

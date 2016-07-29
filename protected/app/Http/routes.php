@@ -53,7 +53,7 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Backend', 'prefix' => 'ad
     //Province
     Route::group(['prefix' => 'province'], function(){
         //index
-        Route::get('/', ['as' => 'admin.province.getList', 'uses' => 'ProvinceController@getList']);
+        Route::get('/', ['as' => 'admin.province.index', 'uses' => 'ProvinceController@index']);
 
         //add
         Route::get('add', ['as' => 'admin.province.getAdd', 'uses' => 'ProvinceController@getAdd']);

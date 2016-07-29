@@ -26,6 +26,19 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="active treeview">
                 <a href="#">
+                    <i class="fa fa-cubes"></i> <span>Dữ liệu cơ sở</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active">
+                        <a href="{!! route('admin.country.index') !!}"><i class="fa fa-circle-o"></i> Quốc gia</a>
+                    </li>
+                    <li>
+                        <a href="{!! route('admin.province.index') !!}"><i class="fa fa-circle-o"></i> Tỉnh/Thành</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="active treeview">
+                <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">

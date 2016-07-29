@@ -23,7 +23,15 @@ class Country extends Model
         $countries = $this->select(['country_id', 'country_name'])
             ->where('published', 1)
             ->where('delete_flg', 0)
-            ->orderby('country_name', 'ASC')->paginate(10);
+            ->orderby('country_name', 'ASC')->get();
+        return $countries;
+    }
+
+    public function getList(){
+        $countries = $this->select(['country_id', 'country_name'])
+            ->where('published', 1)
+            ->where('delete_flg', 0)
+            ->orderby('country_name', 'ASC')->paginate(PER_PAGE);
         return $countries;
     }
 

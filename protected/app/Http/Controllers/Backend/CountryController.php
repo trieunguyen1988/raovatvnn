@@ -20,7 +20,7 @@ class CountryController extends Controller
     public function index()
     {
         $mCountry = new Country();
-        $countries = $mCountry->getAll();
+        $countries = $mCountry->getList();
         $data['countries'] = $countries;
         return view('backend.country.index', $data);
     }
@@ -59,6 +59,6 @@ class CountryController extends Controller
     public function getDelete($country_id){
         $mCountry = new Country();
         $isDelete = $mCountry->deleteById($country_id);
-        return redirect()->route('admin.country.getList');
+        return redirect()->route('admin.country.index');
     }
 }

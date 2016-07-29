@@ -47,6 +47,7 @@
         <script src="{{ URL::asset('public/backend/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
 
         <script src="{{  URL::asset('public/backend/plugins/iCheck/icheck.min.js') }}"></script>
+        <script src="{{  URL::asset('public/backend/js/common.js') }}"></script>
     </head>
     <body class="hold-transition skin-blue layout-boxed sidebar-mini">
         <div class="wrapper">
