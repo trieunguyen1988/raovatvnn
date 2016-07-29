@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Admin - @yield('title')</title>
+        <title>Admin - {!! isset($title) ? $title : 'Rao vặt' !!}</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.5 -->
@@ -48,7 +48,7 @@
 
         <script src="{{  URL::asset('public/backend/plugins/iCheck/icheck.min.js') }}"></script>
     </head>
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-blue layout-boxed sidebar-mini">
         <div class="wrapper">
             @include('backend.elements.header')
 
@@ -62,6 +62,10 @@
 
             @include('backend.elements.footer')
             @include('backend.elements.controlsidebar')
-        </div>        
+        </div>
+        <!-- AdminLTE App -->
+        <script src="{{  URL::asset('public/backend/dist/js/app.js') }}"></script>
+        <!-- AdminLTE for demo purposes -->
+
     </body>
 </html>
