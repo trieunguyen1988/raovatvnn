@@ -15,7 +15,7 @@ class Province extends Model
      * @var array
      */
     protected $fillable = [
-        'province_name', 'published',
+        'country_id', 'province_name', 'published',
     ];
 
     public function getAll()
@@ -35,7 +35,38 @@ class Province extends Model
         }
 
         $province = $this->where('province_id', $province_id)
-            ->where('delete_flg', 0);
+            ->where('published', 1)
+            ->where('delete_flg', 0)
+            ->first();
         return $province;
+    }
+
+    public function updateById($provice_id, $params){
+        $province = $this->getById($provice_id);
+
+        if (!$province || empty($params)){
+            return false;
+        }
+
+        foreach ($params as $field => $value){
+            $province->$field = $value;
+        }
+        return $province->save();
+    }
+
+    public function deleteProvince($province_ids){
+        if (!$province_ids){
+            return false;
+        }
+
+        if (!is_array($province_ids)){
+            $province_ids = array($province_ids);
+        }
+
+        $updData = [
+            'delete_flg' => 1
+        ];
+
+        return $this->whereIn('province_id', $province_ids)->update($updData);
     }
 }

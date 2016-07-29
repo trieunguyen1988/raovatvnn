@@ -24,6 +24,16 @@
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <div class="box-body">
+                    @if (Session::has('flash_message_err'))
+                        <div class="form-group alert alert-danger">
+                            <label class="control-label" for="inputError"><i class="icon fa fa-warning"></i> {!! Session::get('flash_message_err') !!}</label>
+                        </div>
+                    @endif
+                    @if (Session::has('flash_message_succ'))
+                        <div class="form-group alert alert-success">
+                            <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> {!! Session::get('flash_message_succ') !!}</label>
+                        </div>
+                    @endif
                     <table id="province-list" class="table table-bordered table-striped">
                         <colgroup>
                             <col width="10%"></col>
@@ -49,8 +59,10 @@
                                     <td>{!! $province->province_name !!}</td>
                                     <td>{!! $province->country_name !!}</td>
                                     <td align="center">
-                                        <button class="btn btn-success btn-xs"><i class="fa fa-fw fa-edit"></i>{!! trans('common.btn_edit') !!}</button>
-                                        <a href="{!! route('admin.province.getDelete', $province->province_id) !!}">
+                                        <a href="{!! route('admin.province.getEdit', Crypt::encrypt($province->province_id)) !!}">
+                                            <button class="btn btn-success btn-xs"><i class="fa fa-fw fa-edit"></i>{!! trans('common.btn_edit') !!}</button>
+                                        </a>
+                                        <a href="{!! route('admin.province.getDelete', Crypt::encrypt($province->province_id)) !!}">
                                             <button class="btn btn-danger btn-xs"><i class="fa fa-fw fa-remove"></i>{!! trans('common.btn_delete') !!}</button>
                                         </a>
                                     </td>

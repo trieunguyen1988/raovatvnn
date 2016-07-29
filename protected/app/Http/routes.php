@@ -43,9 +43,18 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Backend', 'prefix' => 'ad
 
     //Province
     Route::group(['prefix' => 'province'], function(){
+        //index
+        Route::get('/', ['as' => 'admin.province.getList', 'uses' => 'ProvinceController@getList']);
+
+        //add
         Route::get('add', ['as' => 'admin.province.getAdd', 'uses' => 'ProvinceController@getAdd']);
         Route::post('add', ['as' => 'admin.province.postAdd', 'uses' => 'ProvinceController@postAdd']);
-        Route::get('/', ['as' => 'admin.province.getList', 'uses' => 'ProvinceController@getList']);
+
+        //edit
+        Route::get('edit/{province_id}', ['as' => 'admin.province.getEdit', 'uses' => 'ProvinceController@getEdit']);
+        Route::post('edit/{province_id}', ['as' => 'admin.province.postEdit', 'uses' => 'ProvinceController@postEdit']);
+
+        //delete
         Route::get('delete/{province_id}', ['as' => 'admin.province.getDelete', 'uses' => 'ProvinceController@getDelete']);
     });
 });  

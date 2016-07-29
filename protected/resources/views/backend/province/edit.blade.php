@@ -8,7 +8,7 @@
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> {!! trans('common.lbl_home') !!}</a></li>
         <li><a href="{!! route('admin.province.getList') !!}"> {!! trans('province.province') !!}</a></li>
-        <li class="active">{!! trans('province.lbl_add') !!}</li>
+        <li class="active">{!! trans('province.lbl_edit') !!}</li>
     </ol>
 </section>
 
@@ -20,10 +20,10 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{!! trans('province.lbl_add') !!}</h3>
+                    <h3 class="box-title">{!! trans('province.lbl_edit') !!}</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form action="{!! route('admin.province.getAdd') !!}" method="post">
+                <form action="{!! route('admin.province.getEdit', Crypt::encrypt($province->province_id)) !!}" method="post">
                     <div class="box-body">
                         @if (Session::has('flash_message'))
                             {!! Session::get('flash_message') !!}
@@ -34,7 +34,7 @@
                                 <option value="">{!! trans('common.lbl_pls_select') !!}</option>
                                 @if ($countries)
                                     @foreach ($countries as $country)
-                                    <option value="{!! $country->country_id !!}" @if (old('country_id') == $country->country_id) selected="selected" @endif>{!! $country->country_name !!}</option>
+                                    <option value="{!! $country->country_id !!}" @if (old('country_id', $province->country_id) == $country->country_id) selected="selected" @endif>{!! $country->country_name !!}</option>
                                     @endforeach
                                 @endif
                             </select>                            
@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <label for="province_name">{!! trans('province.lbl_name') !!}</label>
-                            <input type="text" class="form-control" id="province_name" name="province_name" placeholder="" value="{!! old('province_name') !!}"/>
+                            <input type="text" class="form-control" id="province_name" name="province_name" placeholder="" value="{!! old('province_name', $province->province_name) !!}"/>
                             @if ($errors->has('province_name'))
                                 <div class="has-error">
                                     <label class="control-label" for="inputError">
