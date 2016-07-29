@@ -23,7 +23,7 @@
                     <a class="btn btn-primary btn-xs pull-right" href="{!! route('admin.country.getAdd') !!}"><i class="fa fa-fw fa-plus"></i>Thêm mới</a>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <div class="box-body">
+                <div class="box-body no-padding">
                     <table id="country-list" class="table table-bordered table-striped">
                         <colgroup>
                             <col width="10%"></col>
@@ -46,7 +46,9 @@
                                     </td>
                                     <td>{!! $country->country_name !!}</td>
                                     <td align="center">
-                                        <button class="btn btn-success btn-xs"><i class="fa fa-fw fa-edit"></i>Sửa</button>
+                                        <a href="{!! route('admin.country.getEdit', $country->country_id) !!}">
+                                            <button class="btn btn-success btn-xs"><i class="fa fa-fw fa-edit"></i>Sửa</button>
+                                        </a>
                                         <a href="{!! route('admin.country.getDelete', $country->country_id) !!}">
                                             <button class="btn btn-danger btn-xs"><i class="fa fa-fw fa-remove"></i>Xóa</button>
                                         </a>
@@ -56,8 +58,8 @@
                             </tbody>
                         @endif
                     </table>
-                    <div class="pull-right">{!! $countries->render() !!}</div>
                 </div><!-- /.box-body -->
+                <div class="box-footer clearfix">{!! $countries->render() !!}</div>
             </div><!-- /.box -->
 
         </div><!--/.col (right) -->

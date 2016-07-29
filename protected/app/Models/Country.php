@@ -34,7 +34,24 @@ class Country extends Model
         }
 
         $country = $this->where('country_id', $country_id)
-            ->where('delete_flg', 0);
+            ->where('delete_flg', 0)
+            ->first();
         return $country;
+    }
+
+    public function deleteById($country_ids)
+    {
+        if (!$country_ids) {
+            return false;
+        }
+
+        $country_ids = is_array($country_ids) ? $country_ids : array($country_ids);
+
+        $updData = [
+            'delete_flg' => 1,
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+
+        return $this->whereIn('country_id', $country_ids)->update($updData);
     }
 }

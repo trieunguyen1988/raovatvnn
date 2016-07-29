@@ -8,7 +8,7 @@
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
         <li><a href="{!! route('admin.country.index') !!}"> Quốc gia</a></li>
-        <li class="active">Thêm mới</li>
+        <li class="active">Sửa</li>
     </ol>
 </section>
 
@@ -23,7 +23,7 @@
                     <h3 class="box-title">{!! trans('country.lbl_add') !!}</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form action="{!! route('admin.country.getAdd') !!}" method="post">
+                <form action="{!! route('admin.country.getEdit', $country->country_id) !!}" method="post">
                     <div class="box-body">
                         @if (Session::has('flash_message'))
                             {!! Session::get('flash_message') !!}
@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">{!! trans('country.lbl_country_name') !!}</label>
                             <input type="text" class="form-control" id="country_name" name="country_name" placeholder=""
-                                   value="{!! old('country_name') !!}">
+                                   value="{!! old('country_name', $country->country_name ) !!}">
                             @if ($errors->has('country_name'))
                                 <div class="has-error">
                                     <label class="control-label" for="inputError"><i

@@ -35,9 +35,18 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Backend', 'prefix' => 'ad
 
     //Country
     Route::group(['prefix' => 'country'], function(){
+        //List
+        Route::get('/', ['as' => 'admin.country.index', 'uses' => 'CountryController@index']);
+
+        //Add
         Route::get('add', ['as' => 'admin.country.getAdd', 'uses' => 'CountryController@getAdd']);
         Route::post('add', ['as' => 'admin.country.postAdd', 'uses' => 'CountryController@postAdd']);
-        Route::get('/', ['as' => 'admin.country.getList', 'uses' => 'CountryController@getList']);
+
+        //Edit
+        Route::get('edit/{country_id}', ['as' => 'admin.country.getEdit', 'uses' => 'CountryController@getEdit']);
+        Route::post('edit/{country_id}', ['as' => 'admin.country.postEdit', 'uses' => 'CountryController@postEdit']);
+
+        //Delete
         Route::get('delete/{country_id}', ['as' => 'admin.country.getDelete', 'uses' => 'CountryController@getDelete']);
     });
 });  
