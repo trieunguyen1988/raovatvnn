@@ -7,6 +7,7 @@
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.5 -->
         <link rel="stylesheet" href="{{ URL::asset('public/backend/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ URL::asset('public/backend/bootstrap/css/bootstrap-switch.min.css') }}">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <!-- Ionicons -->
@@ -42,6 +43,7 @@
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
         <!-- Bootstrap 3.3.5 -->
         <script src="{{ URL::asset('public/backend/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ URL::asset('public/backend/bootstrap/js/bootstrap-switch.min.js') }}"></script>
         
         <!-- Bootstrap WYSIHTML5 -->
         <script src="{{ URL::asset('public/backend/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>

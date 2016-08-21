@@ -1,7 +1,7 @@
 $(function () {
     //Enable iCheck plugin for checkboxes
     //iCheck for checkbox and radio inputs
-    $('.content input[type="checkbox"]').iCheck({
+    $('.content input.icheckbox').iCheck({
         checkboxClass: 'icheckbox_flat-blue',
         radioClass: 'iradio_flat-blue'
     });

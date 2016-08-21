@@ -66,4 +66,21 @@ Route::group(['middleware' => ['web'], 'namespace' => 'Backend', 'prefix' => 'ad
         //delete
         Route::get('delete/{province_id}', ['as' => 'admin.province.getDelete', 'uses' => 'ProvinceController@getDelete']);
     });
+
+    //Category
+    Route::group(['prefix' => 'category'], function(){
+        //index
+        Route::get('/', ['as' => 'admin.category.index', 'uses' => 'CategoryController@index']);
+
+        //add
+        Route::get('add', ['as' => 'admin.category.getAdd', 'uses' => 'CategoryController@getAdd']);
+        Route::post('add', ['as' => 'admin.category.postAdd', 'uses' => 'CategoryController@postAdd']);
+
+        //edit
+        Route::get('edit/{category_id}', ['as' => 'admin.category.getEdit', 'uses' => 'CategoryController@getEdit']);
+        Route::post('edit/{category_id}', ['as' => 'admin.category.postEdit', 'uses' => 'CategoryController@postEdit']);
+
+        //delete
+        Route::get('delete/{category_id}', ['as' => 'admin.category.getDelete', 'uses' => 'CategoryController@getDelete']);
+    });
 });  

@@ -1,9 +1,11 @@
-<?php 
+<?php
 return [
-	'lbl_home' => 'Trang chủ',
-	'btn_save' => 'Lưu',
-	'btn_add'  => 'Thêm',
-	'btn_edit' => 'Sửa',
-	'btn_delete' => 'Xóa',
-	'lbl_pls_select' => '-- Vui lòng chọn --'
+    'lbl_home' => 'Trang chủ',
+    'btn_save' => 'Lưu',
+    'btn_add' => 'Thêm',
+    'btn_edit' => 'Sửa',
+    'btn_delete' => 'Xóa',
+    'lbl_pls_select' => '-- Vui lòng chọn --',
+    'lbl_published' => 'Kích hoạt',
+    'lbl_unpublished' => 'Ngừng kích hoạt'
 ];
